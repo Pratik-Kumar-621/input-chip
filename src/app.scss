@@ -1,0 +1,111 @@
+@import "./styles/mixins";
+.input-chip {
+  background-color: #fbfbfb;
+  min-height: 100vh;
+  display: flex;
+  justify-content: center;
+  .input_container {
+    margin-top: 150px;
+    display: flex;
+    width: 800px;
+
+    height: 48px;
+    padding: 0 15px;
+    border-radius: 7px;
+    overflow: hidden;
+    border: 1px solid rgb(142, 142, 142);
+    border-bottom: 2.5px solid rgb(142, 142, 142);
+    background-color: white;
+    .selected_list {
+      @include flexCenter;
+      max-width: 600px;
+      overflow-x: auto;
+      gap: 10px;
+      &_item {
+        border-radius: 16px;
+        height: 32px;
+        background-color: #e7e7e7;
+        @include flexCenter;
+        gap: 4px;
+        &_image {
+          width: 32px;
+          border-radius: 16px;
+          background-color: #a6a6a6;
+          height: 32px;
+        }
+        &_name {
+          font-size: 0.85rem;
+          font-weight: 400;
+        }
+        &_remove {
+          margin: 0 10px 0 2.5px;
+          transform: scaleX(1.28);
+          //   font-weight: 400;
+          margin-top: -3px;
+          cursor: pointer;
+        }
+      }
+    }
+    .input-field {
+      width: 100%;
+      input {
+        padding-left: 20px;
+        width: 100%;
+        height: 48px;
+        outline: none !important;
+        border: none;
+        font-size: 1.25rem;
+        font-weight: 400;
+      }
+    }
+  }
+
+  .list_container {
+    position: absolute;
+    margin-left: 20px;
+    max-height: 320px;
+    overflow-y: auto;
+    background-color: #fff;
+    box-shadow: 1px 1px 5px #b6b6b6;
+    border-radius: 7px;
+    .list_item {
+      @include flexCenter;
+      justify-content: flex-start;
+      cursor: pointer;
+      background-color: #ffffff;
+      transition: all 0.1s ease-in;
+
+      &:hover {
+        background-color: #f3f3f3;
+      }
+      &_image {
+        width: 36px !important;
+        height: 36px;
+        border-radius: 50%;
+        background-color: #aeaeae;
+        margin: 10px 10px 10px 20px;
+      }
+      &_name {
+        width: 130px;
+        font-size: 1rem;
+        font-weight: 500;
+        text-overflow: ellipsis;
+      }
+      &_email {
+        font-size: 0.8rem;
+        font-weight: 400;
+        color: #5f5f5f;
+        width: 170px;
+        overflow: hidden;
+        text-overflow: ellipsis;
+      }
+    }
+    .list_none {
+      width: 300px;
+      height: 100px;
+      @include flexCenter;
+      font-size: 1.25rem;
+      font-weight: 500;
+    }
+  }
+}

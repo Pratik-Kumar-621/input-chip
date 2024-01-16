@@ -1,26 +1,38 @@
-import React from 'react';
-import logo from './logo.svg';
-import './App.css';
+import { useEffect, useState } from "react";
+import { userDetails, userType } from "./data/data";
+import Input from "./components/Input";
+import "./app.scss";
 
-function App() {
+const App = () => {
+  // Input value
+  const [input, setInput] = useState<string>("");
+
+  // Current users list
+  const [data, setData] = useState<userType[]>(userDetails);
+
+  // List of selected users
+  const [selectedUsers, setSelectedUsers] = useState<userType[]>([]);
+
+  // useEffect to filter the users list based on the input value
+  useEffect(() => {
+    (() => {
+      setData(
+        userDetails.filter((user) =>
+          user.name.toLowerCase().includes(input.toLowerCase())
+        )
+      );
+    })();
+  }, [input]);
+
+  // Code
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.tsx</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
+    <div className="input-chip">
+      {/* Input Field */}
+      <Input
+        {...{ data, setData, input, setInput, selectedUsers, setSelectedUsers }}
+      />
     </div>
   );
-}
+};
 
 export default App;
